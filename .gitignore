@@ -1,0 +1,32 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# Ignore environment variable files
+.env
+
+# Ignore compiled PHP files
+*.php~
+
+# Ignore Composer dependencies
+/vendor/
+/src/vendor/
+
+# Ignore Docker files
+php-ecommerce/docker-compose.override.yml
+php-ecommerce/docker-compose.override.yaml
+
+# Ignore Nginx configuration files
+php-ecommerce/nginx/conf.d/default.conf
+
+# Ignore IDE specific files
+.idea/
+.vscode/
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db

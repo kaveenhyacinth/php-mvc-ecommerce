@@ -1,0 +1,22 @@
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: php-ecommerce-app
+    restart: no
+    working_dir: /var/www
+    volumes:
+      - ../src:/var/www
+    ports:
+      - "9000:9000"  # Expose port 9000 for PHP-FPM
+
+  nginx:
+    image: nginx:1.19-alpine
+    container_name: php-ecommerce-nginx
+    restart: no
+    ports:
+      - "8000:80"
+    volumes:
+      - ../src:/var/www
+      - ./nginx/conf.d:/etc/nginx/conf.d
