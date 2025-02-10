@@ -9,6 +9,10 @@
             @foreach($products as $product)
                 <li class="product__list__item">
                     <div class="product">
+                        <div>
+                            <img src="{{$product['image']}}"
+                                 alt="product image" width="300" height="300"/>
+                        </div>
                         <div class="product__info">
                             <div class="info__content">
                                 <h2 class="content__header">{{$product['title']}}</h2>
