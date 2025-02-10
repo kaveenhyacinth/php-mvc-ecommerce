@@ -1,0 +1,51 @@
+@use 'mixins' as mx;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #1D364D;
+}
+
+.app-header {
+  padding: 1rem;
+  border: 1px solid #EDEDED;
+
+  .header {
+    @include mx.flex($gap: 2rem);
+
+    &__text {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #0D3356;
+    }
+
+    &__nav {
+      .nav__list {
+        @include mx.flex($gap: 1rem);
+        list-style: none;
+
+        &__item {
+          a {
+            text-decoration: none;
+            color: #1D364D;
+            @include mx.smoothTransition;
+
+            &:hover {
+              color: #3A4980;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.app-content {
+  margin-top: .5rem;
+}

@@ -3,13 +3,27 @@
 @section('title', 'All Products')
 
 @section('content')
-    <div>
-        <h1>All Products</h1>
-        <ul>
+    <div class="products">
+        <p>All Products</p>
+        <ul class="product__list">
             @foreach($products as $product)
-                <li>{{$product['title']}}</li>
+                <li class="product__list__item">
+                    <div class="product">
+                        <div class="product__info">
+                            <div class="info__content">
+                                <h2 class="content__header">{{$product['title']}}</h2>
+                                <p class="content__excerpt">{{$product['description'] ?? "something"}}</p>
+                            </div>
+                            <p class="info__price">USD {{$product['price']}}</p>
+                        </div>
+                        <div class="product__rating">
+                        </div>
+                        <div class="product__actions">
+                            <button>Add to Cart</button>
+                        </div>
+                    </div>
+                </li>
             @endforeach
-
         </ul>
     </div>
 @endsection

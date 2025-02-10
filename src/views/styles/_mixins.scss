@@ -1,0 +1,15 @@
+@mixin flex($direction: row, $justify: flex-start, $align: center, $gap: 8px) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin smoothTransition($property: all, $duration: 0.3s, $timing: ease-in-out) {
+  transition: $property $duration $timing;
+}
+
+@mixin pageContainer($padding: 1rem) {
+  padding: $padding;
+}
