@@ -2,13 +2,14 @@
 
     namespace App\Helpers;
 
+    use Jenssegers\Blade\Blade;
+
     function view(string $template, array $data = [], string $layout = 'mainLayout'): void
     {
         extract($data);
 
-        ob_start();
-        require __DIR__ . "/../../templates/$template.php";
-        $content = ob_get_clean();
-
-        require __DIR__ . "/../../templates/layouts/$layout.php";
+        $views = __DIR__ . "/../../views";
+        $cache = __DIR__ . "/../../cache";
+        $blade = new Blade($views, $cache . '/views');
+        echo $blade->render($template, $data);
     }

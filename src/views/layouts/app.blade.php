@@ -1,15 +1,17 @@
-<?php
-?>
-
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP Ecommerce</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <title>@yield('title', 'Laravel Blade')</title>
 </head>
+
 <body>
-<header>
+
+<header class="app-header">
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
@@ -18,10 +20,13 @@
         </ul>
     </nav>
 </header>
-<main>
-    <!-- This is where each page’s content is injected -->
-    <?= $content; ?>
+
+<main class="app-content">
+    @yield('content')
 </main>
-<footer></footer>
+
+<footer class="app-footer"></footer>
+
 </body>
+
 </html>

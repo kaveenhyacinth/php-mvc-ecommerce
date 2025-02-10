@@ -23,6 +23,12 @@ php-ecommerce/docker-compose.override.yaml
 # Ignore Nginx configuration files
 php-ecommerce/nginx/conf.d/default.conf
 
+# Ignore Database files
+php-ecommerce/storage
+
+# Ignore cache files
+src/cache/
+
 # Ignore IDE specific files
 .idea/
 .vscode/

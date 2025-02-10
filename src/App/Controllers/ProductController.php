@@ -2,13 +2,17 @@
 
     namespace App\Controllers;
 
+    use App\Models\Product;
+
     use function App\Helpers\view;
 
     class ProductController
     {
-        public function index()
+        public function index(): void
         {
-            view('products/index', ['products' => []]);
-        }
+            $product = new Product();
+            $products = $product->fetchAll();
 
+            view('products/index', ['products' => $products]);
+        }
     }

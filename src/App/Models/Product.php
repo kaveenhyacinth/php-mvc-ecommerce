@@ -2,10 +2,24 @@
 
     namespace App\Models;
 
-    class Product
+    use App\Core\Model;
+
+    class Product extends Model
     {
-        public function __construct()
+        public function fetchAll(): array
         {
-            echo "Product model created!";
+            $query = "SELECT * FROM products";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }
+
+        public function fetchById(int $id)
+        {
+            $query = "SELECT * FROM products WHERE id = :id";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            return $stmt->fetch();
         }
     }

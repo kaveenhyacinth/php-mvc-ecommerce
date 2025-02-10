@@ -1,0 +1,5 @@
+# Ignore Environment Variable Files
+.env
+
+# Ignore Vendor Directories
+/vendor/

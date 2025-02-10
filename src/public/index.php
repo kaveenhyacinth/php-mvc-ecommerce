@@ -1,10 +1,26 @@
 <?php
 
+    use App\App;
+
     require __DIR__ . '/../vendor/autoload.php';
 
-   $router = require __DIR__ . '/../router/web.php';
+    $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+    $dotenv->load();
 
-   $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-   $method = $_SERVER['REQUEST_METHOD'];
+    $router = require __DIR__ . '/../router/web.php';
+    (new App($router, [
+      'host' => $_ENV['DB_HOST'],
+      'database' => $_ENV['DB_DATABASE'],
+      'username' => $_ENV['DB_USER'],
+      'password' => $_ENV['DB_PASS'],
+      'driver' => $_ENV['DB_DRIVER'] ?? 'mysql'
+    ]))->run();
 
-    $router->dispatch($uri, $method);
+    $db = App::db();
+
+    $query = 'SELECT * FROM products';
+    $stmt = $db->prepare($query);
+    $stmt->execute();
+
+//    var_dump($stmt->fetchAll());
+
