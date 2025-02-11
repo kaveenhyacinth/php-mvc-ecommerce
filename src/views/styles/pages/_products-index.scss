@@ -1,74 +1,75 @@
 @use '../mixins' as mx;
+@use '../variables/colors' as colors;
 
 .products {
   padding: 1rem;
-}
 
-.product__list {
-  margin-top: 1rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1rem;
+  .product__list {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
 
-  &__item {
-    list-style: none;
+    &__item {
+      list-style: none;
 
-    .product {
-      max-width: 100%;
-      padding: 1.25rem;
-      border-radius: 1.25rem;
-      border: 1px solid #ccc;
+      .product {
+        max-width: 100%;
+        padding: 1.25rem;
+        border-radius: 1.25rem;
+        border: 1px solid #ccc;
 
-      &__info {
-        @include mx.flex($align: flex-start, $justify: space-between);
+        &__content {
+          flex: 1;
 
-        .info {
-          &__content {
-            flex: 1;
-
-            h2 {
-              font-size: 1.125rem;
-              font-weight: 500;
-              color: #667085;
-            }
-
-            p {
-              font-size: 0.875rem;
-              color: #98A2B3;
-              display: -webkit-box;
-              -webkit-line-clamp: 2;
-              -webkit-box-orient: vertical;
-              overflow: hidden;
-            }
+          h2 {
+            font-size: 1.125rem;
+            font-weight: 600;
           }
 
-          &__price {
-            font-size: 1.125rem;
-            font-weight: bold;
-            color: #344054;
+          p {
+            font-size: 0.875rem;
+            font-weight: 300;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
           }
         }
-      }
 
-      &__actions {
-        margin-top: .75rem;
+        &__price {
+          margin-top: .5rem;
+          font-size: 1.25rem;
+          font-weight: bold;
+          color: colors.$primary;
 
-        button {
-          padding: 1rem 1.5rem;
-          border: none;
-          border-radius: 1rem;
-          background-color: #3A4980;
-          color: #fff;
-          font-weight: 600;
-          letter-spacing: 0.01em;
-          cursor: pointer;
-          transition: background-color 0.3s ease-in-out;
+          span {
+            font-size: 0.75rem;
+            color: colors.$primary;
+          }
+        }
 
-          &:hover {
-            background-color: #344054;
+        &__actions {
+          margin-top: .75rem;
+
+          button {
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 1rem;
+            background-color: colors.$action;
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+
+            &:hover {
+              background-color: colors.$primary;
+            }
           }
         }
       }
     }
   }
 }
+

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'All Products')
+@section('title', 'All Products | Shoeman Hub')
 
 @section('content')
     <div class="products">
@@ -13,13 +13,14 @@
                             <img src="{{$product['image']}}"
                                  alt="product image" width="300" height="300"/>
                         </div>
-                        <div class="product__info">
-                            <div class="info__content">
-                                <h2 class="content__header">{{$product['title']}}</h2>
-                                <p class="content__excerpt">{{$product['description'] ?? "something"}}</p>
-                            </div>
-                            <p class="info__price">USD {{$product['price']}}</p>
+                        <div class="product__content">
+                            <h2 class="content__header">{{$product['title']}}</h2>
+                            <p class="content__excerpt">{{$product['description'] ?? "something"}}</p>
                         </div>
+                        <p class="product__price">
+                            <span>USD</span>
+                            {{$product['price']}}
+                        </p>
                         <div class="product__rating">
                         </div>
                         <div class="product__actions">
