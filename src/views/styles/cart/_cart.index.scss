@@ -1,0 +1,117 @@
+@use '../mixins' as mx;
+@use '../variables/colors' as colors;
+
+#cart-index {
+  padding: 1rem 1.5rem;
+
+  .cart__container {
+    margin-top: 1.5rem;
+    .cart__box {
+      display: grid;
+      gap: 1rem;
+
+      @media (min-width: 668px) {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      &__products {
+        .cart__list {
+          &__item {
+            list-style: none;
+            margin-bottom: 1rem;
+
+            .cart__item {
+              @include mx.flex($align: flex-start);
+
+              &__image-container {
+                width: 60px;
+                height: 60px;
+                padding: .5rem;
+                border-radius: 1rem;
+                border: 1px solid colors.$text;
+
+                img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: contain;
+                }
+              }
+
+              &__content {
+                .content {
+                  &__price, &__total {
+                    span {
+                      font-size: 0.75rem;
+                    }
+                  }
+
+                  &__price {
+                    color: #AAAAAA;
+                    font-size: 0.875rem;
+                    @include mx.flex();
+
+                    .quantity-input {
+                      width: 32px;
+                      padding: .1rem;
+                    }
+                  }
+
+                  &__total {
+                    color: colors.$primary;
+                    font-size: 1rem;
+                    font-weight: 600;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &__info {
+        .info__content {
+          border: 1px dashed colors.$text;
+          border-radius: 0.5rem;
+          padding: 1rem;
+
+          div {
+            @include mx.flex($gap: 1rem, $justify: space-between);
+
+            p:first-child {
+              font-weight: 500;
+              font-size: 1.25rem;
+            }
+
+            p:nth-child(2) {
+              font-weight: 600;
+              font-size: 1.5rem;
+
+              span {
+                font-size: 1.25rem;
+              }
+            }
+          }
+
+          button {
+            margin-top: 1rem;
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            background-color: colors.$action;
+            color: colors.$background;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+
+            &:hover {
+              background-color: colors.$primary;
+            }
+          }
+        }
+      }
+    }
+  }
+}

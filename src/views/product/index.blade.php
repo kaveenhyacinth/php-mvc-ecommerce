@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'All Products | Shoeman Hub')
+@section('cartCount', $cartItemCount)
 
 @section('content')
     <div class="products">

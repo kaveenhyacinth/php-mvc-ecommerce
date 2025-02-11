@@ -2,6 +2,7 @@
 
     namespace App\Controllers;
 
+    use App\Models\Cart;
     use App\Models\Product;
 
     use function App\Helpers\view;
@@ -13,7 +14,11 @@
             $product = new Product();
             $products = $product->fetchAll();
 
-            view('product/index', ['products' => $products]);
+            $cart = new Cart();
+            $cartId = $cart->fetchCartBySessionId($cart->getCartSessionId());
+            $cartItemCount = $cart->fetchCartItemsCount($cartId);
+
+            view('product/index', ['products' => $products, 'cartItemCount' => $cartItemCount]);
         }
 
         public function show(int $id): void
@@ -22,14 +27,5 @@
             $product = $product->fetchById($id);
 
             view('product/show', ['product' => $product]);
-        }
-
-        public function test(): void
-        {
-            $product = new Product();
-            $products = $product->fetchAll();
-
-            header('Content-Type: application/json; charset=utf-8');
-            echo json_encode($products);
         }
     }

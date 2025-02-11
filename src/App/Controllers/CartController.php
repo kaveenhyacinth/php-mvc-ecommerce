@@ -3,7 +3,6 @@
     namespace App\Controllers;
 
     use App\Models\Cart;
-    use Ramsey\Uuid\UuidFactory;
 
     use function App\Helpers\view;
 
@@ -11,20 +10,7 @@
     {
         private function createCartSession(Cart $cartModel): string
         {
-            $cartSessionName = 'PESHC';
-            if (!isset($_COOKIE[$cartSessionName])) {
-                $uuid = new UuidFactory();
-                $cartSessionId = $uuid->uuid4();
-                $expiryTime = time() + (10 * 365 * 24 * 60 * 60);
-                setcookie($cartSessionName, $cartSessionId, [
-                  'expires' => $expiryTime,
-                  'path' => '/',
-                  'httponly' => true,
-                ]);
-            } else {
-                $cartSessionId = $_COOKIE[$cartSessionName];
-            }
-
+            $cartSessionId = $cartModel->getCartSessionId();
             $cartId = $cartModel->fetchCartBySessionId($cartSessionId);
 
             if (!$cartId) {
@@ -39,9 +25,11 @@
             $cartModel = new Cart();
             $cartId = $this->createCartSession($cartModel);
             $cartItems = $cartModel->fetchCartItems($cartId);
+            $cartTotal = $cartModel->getCartTotal($cartItems);
 
             view('cart/index', [
-              'cartItems' => $cartItems
+              'cartItems' => $cartItems,
+              'cartTotal' => $cartTotal
             ]);
         }
 
@@ -56,10 +44,12 @@
             }
 
             $cartItems = $cartModel->fetchCartItems($cartId);
+            $cartTotal = $cartModel->getCartTotal($cartItems);
 
 
             view('cart/index', [
-              'cartItems' => $cartItems
+              'cartItems' => $cartItems,
+              'cartTotal' => $cartTotal
             ]);
         }
     }

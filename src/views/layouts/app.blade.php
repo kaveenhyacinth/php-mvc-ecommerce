@@ -18,7 +18,7 @@
         </h1>
         <div class="header__actions">
             <a class="actions__cart" href="/cart">
-                <span class="cart__count">0</span>
+                <span class="cart__count">@yield('cartCount', 0)</span>
                 <img alt="" src="assets/images/shopping-bag.svg" width="24" height="24"/>
             </a>
         </div>
