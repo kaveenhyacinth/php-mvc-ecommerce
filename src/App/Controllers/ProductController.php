@@ -15,4 +15,12 @@
 
             view('products/index', ['products' => $products]);
         }
+
+        public function show(int $id): void
+        {
+            $product = new Product();
+            $product = $product->fetchById($id);
+
+            view('products/show', ['product' => $product]);
+        }
     }

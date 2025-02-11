@@ -6,6 +6,6 @@
     $router = new Router();
 
     $router->get('/', [ProductController::class, 'index']);
-//    $router->get('/products', [ProductController::class, 'index']);
+    $router->get('/{id}', [ProductController::class, 'show']);
 
     return $router;

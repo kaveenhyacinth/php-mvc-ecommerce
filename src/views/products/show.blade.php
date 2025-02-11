@@ -1,7 +1,9 @@
-<?php
+@extends('layouts.app')
 
-?>
+@section('title', 'All Products')
 
-<div>
-    <h1>Product</h1>
-</div>
+@section('content')
+    <div class="show-product">
+        {{$product["title"]}}
+    </div>
+@endsection
