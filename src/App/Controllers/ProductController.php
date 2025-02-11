@@ -13,7 +13,7 @@
             $product = new Product();
             $products = $product->fetchAll();
 
-            view('products/index', ['products' => $products]);
+            view('product/index', ['products' => $products]);
         }
 
         public function show(int $id): void
@@ -21,6 +21,15 @@
             $product = new Product();
             $product = $product->fetchById($id);
 
-            view('products/show', ['product' => $product]);
+            view('product/show', ['product' => $product]);
+        }
+
+        public function test(): void
+        {
+            $product = new Product();
+            $products = $product->fetchAll();
+
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($products);
         }
     }

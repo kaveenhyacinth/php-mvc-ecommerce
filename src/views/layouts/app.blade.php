@@ -13,14 +13,15 @@
 
 <header class="app-header">
     <div class="header">
-        <h1 class="header__text">Shoeman Hub</h1>
-        <nav class="header__nav">
-            <ul class="nav__list">
-                <li class="nav__list__item"><a href="/">Home</a></li>
-                <li class="nav__list__item"><a href="/products">Products</a></li>
-                <li class="nav__list__item"><a href="/products/create">Create Product</a></li>
-            </ul>
-        </nav>
+        <h1 class="header__logo">
+            <a href="/">Shoeman Hub</a>
+        </h1>
+        <div class="header__actions">
+            <a class="actions__cart" href="/cart">
+                <span class="cart__count">0</span>
+                <img alt="" src="assets/images/shopping-bag.svg" width="24" height="24"/>
+            </a>
+        </div>
     </div>
 </header>
 
@@ -29,6 +30,8 @@
 </main>
 
 <footer class="app-footer"></footer>
+
+<script src="assets/js/main.js"></script>
 
 </body>
 

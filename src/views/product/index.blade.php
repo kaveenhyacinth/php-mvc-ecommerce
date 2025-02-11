@@ -11,7 +11,7 @@
                     <div class="product">
                         <div>
                             <img src="{{$product['image']}}"
-                                 alt="product image" width="300" height="300"/>
+                                 alt="product image" width="260" height="300"/>
                         </div>
                         <div class="product__content">
                             <h2 class="content__header">{{$product['title']}}</h2>
@@ -24,7 +24,10 @@
                         <div class="product__rating">
                         </div>
                         <div class="product__actions">
-                            <button>Add to Cart</button>
+                            <form action="/cart" method="POST">
+                                <input type="hidden" name="product_id" value="{{$product['id']}}">
+                                <button type="submit">Add to Cart</button>
+                            </form>
                         </div>
                     </div>
                 </li>

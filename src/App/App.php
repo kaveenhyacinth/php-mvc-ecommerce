@@ -10,7 +10,8 @@
         private static DB $db;
 
         /**
-         * @param Router $router
+         * @param Router $webRouter
+         * @param Router $apiRouter
          * @param array $config
          */
         public function __construct(protected Router $router, protected array $config = [])

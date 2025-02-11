@@ -24,9 +24,14 @@ body {
   box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.1);
 
   .header {
-    @include mx.flex($gap: 2rem);
+    @include mx.flex($gap: 2rem, $justify: space-between);
 
-    &__text {
+    &__logo {
+      a {
+        text-decoration: none;
+        color: colors.$primary;
+      }
+
       font-size: 2rem;
       font-weight: bold;
       color: colors.$primary;
@@ -45,6 +50,41 @@ body {
 
             &:hover {
               color: #3A4980;
+            }
+          }
+        }
+      }
+    }
+
+    &__actions {
+      .actions {
+        &__cart {
+          @include mx.flex($gap: 1rem, $justify: center);
+          position: relative;
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background-color: #A67B5B44;
+          cursor: pointer;
+          transition: background-color 0.2s ease-in-out;
+
+          &:hover {
+            background-color: #A67B5B66;
+          }
+
+          .cart {
+            &__count {
+              @include mx.flex($justify: center);
+              position: absolute;
+              top: -4px;
+              right: -4px;
+              width: 20px;
+              height: 20px;
+              background-color: colors.$primary;
+              color: colors.$background;
+              border-radius: 50%;
+              font-size: 0.75rem;
+              line-height: 0.75rem;
             }
           }
         }
