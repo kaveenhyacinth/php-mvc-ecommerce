@@ -91,6 +91,25 @@
             return $stmt->fetchAll();
         }
 
+        public function updateQuantity(int $cartId, int $productId, int $quantity): void
+        {
+            $updateQuery = "UPDATE cart_items SET quantity = :quantity WHERE cart_id = :cart_id AND product_id = :product_id";
+            $stmt = $this->db->prepare($updateQuery);
+            $stmt->bindParam(':quantity', $quantity);
+            $stmt->bindParam(':cart_id', $cartId);
+            $stmt->bindParam(':product_id', $productId);
+            $stmt->execute();
+        }
+
+        public function deleteCartItem(int $cartId, int $productId): void
+        {
+            $deleteQuery = "DELETE FROM cart_items WHERE cart_id = :cart_id AND product_id = :product_id";
+            $stmt = $this->db->prepare($deleteQuery);
+            $stmt->bindParam(':cart_id', $cartId);
+            $stmt->bindParam(':product_id', $productId);
+            $stmt->execute();
+        }
+
         public function fetchCartItemsCount(int $cartId): int
         {
             $query = "SELECT COUNT(*) FROM cart_items WHERE cart_id = :cart_id";

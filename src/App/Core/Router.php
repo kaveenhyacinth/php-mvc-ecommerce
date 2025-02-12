@@ -6,6 +6,8 @@
     {
         protected array $getRoutes = [];
         protected array $postRoutes = [];
+        protected array $putRoutes = [];
+        protected array $deleteRoutes = [];
 
         /**
          * Register a GET route
@@ -27,6 +29,28 @@
         public function post(string $uri, callable|array $action): void
         {
             $this->postRoutes[$uri] = $action;
+        }
+
+        /**
+         * Register a PUT route
+         * @param string $uri
+         * @param callable|array $action
+         * @return void
+         */
+        public function put(string $uri, callable|array $action): void
+        {
+            $this->putRoutes[$uri] = $action;
+        }
+
+        /**
+         * Register a DELETE route
+         * @param string $uri
+         * @param callable|array $action
+         * @return void
+         */
+        public function delete(string $uri, callable|array $action): void
+        {
+            $this->deleteRoutes[$uri] = $action;
         }
 
         protected function convertUriToRegex(string $routeUri): string
@@ -55,11 +79,25 @@
 
             $routes = [];
 
-            if ($method === "GET") {
-                $routes = $this->getRoutes;
+            if (isset($_POST['__method']) && in_array($_POST['__method'], ['GET', 'POST', 'PUT', 'DELETE'])) {
+                $method = $_POST['__method'];
             }
-            if ($method === "POST") {
-                $routes = $this->postRoutes;
+
+            switch ($method) {
+                case 'GET':
+                    $routes = $this->getRoutes;
+                    break;
+                case 'POST':
+                    $routes = $this->postRoutes;
+                    break;
+                case 'PUT':
+                    $routes = $this->putRoutes;
+                    break;
+                case 'DELETE':
+                    $routes = $this->deleteRoutes;
+                    break;
+                default:
+                    break;
             }
 
             foreach ($routes as $routeUri => $action) {

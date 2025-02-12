@@ -202,19 +202,34 @@ body {
   align-items: center;
   gap: 8px;
 }
-#cart-index .cart__container .cart__box__products .cart__list__item .cart__item__content .content__price .quantity-input {
+#cart-index .cart__container .cart__box__products .cart__list__item .cart__item__content .content__price__qty .quantity-input {
   width: 32px;
   padding: 0.1rem;
+}
+#cart-index .cart__container .cart__box__products .cart__list__item .cart__item__content .content__price__dlt button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background-color: transparent;
+  color: #8E3B34;
+  cursor: pointer;
 }
 #cart-index .cart__container .cart__box__products .cart__list__item .cart__item__content .content__total {
   color: #4A3225;
   font-size: 1rem;
   font-weight: 600;
 }
+#cart-index .cart__container .cart__box__info {
+  max-width: 668px;
+}
 #cart-index .cart__container .cart__box__info .info__content {
   border: 1px dashed #1E1E1E;
   border-radius: 0.5rem;
   padding: 1rem;
+  background-color: #F8F6F2;
 }
 #cart-index .cart__container .cart__box__info .info__content div {
   display: flex;
@@ -250,4 +265,18 @@ body {
 }
 #cart-index .cart__container .cart__box__info .info__content button:hover {
   background-color: #4A3225;
+}
+#cart-index .cart__container .cart__box__info .info__content a {
+  display: block;
+  margin-top: 0.5rem;
+  text-align: center;
+  color: #3D403A;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+#cart-index .cart__container .cart__box__info .info__content a:hover {
+  color: #4A3225;
 }

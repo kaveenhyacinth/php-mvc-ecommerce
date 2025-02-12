@@ -6,6 +6,7 @@
 
   .cart__container {
     margin-top: 1.5rem;
+
     .cart__box {
       display: grid;
       gap: 1rem;
@@ -50,9 +51,21 @@
                     font-size: 0.875rem;
                     @include mx.flex();
 
-                    .quantity-input {
-                      width: 32px;
-                      padding: .1rem;
+                    &__qty {
+                      .quantity-input {
+                        width: 32px;
+                        padding: .1rem;
+                      }
+                    }
+
+                    &__dlt {
+                      button {
+                        @include mx.flex($justify: center, $align: center);
+                        border: none;
+                        background-color: transparent;
+                        color: colors.$danger;
+                        cursor: pointer;
+                      }
                     }
                   }
 
@@ -69,10 +82,13 @@
       }
 
       &__info {
+        max-width: 668px;
+
         .info__content {
           border: 1px dashed colors.$text;
           border-radius: 0.5rem;
           padding: 1rem;
+          background-color: colors.$background;
 
           div {
             @include mx.flex($gap: 1rem, $justify: space-between);
@@ -104,10 +120,26 @@
             font-weight: 600;
             letter-spacing: 0.01em;
             cursor: pointer;
-            transition: background-color 0.3s ease-in-out;
+            @include mx.smoothTransition($property: background-color);
 
             &:hover {
               background-color: colors.$primary;
+            }
+          }
+
+          a {
+            display: block;
+            margin-top: .5rem;
+            text-align: center;
+            color: colors.$action;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            @include mx.smoothTransition($property: color);
+
+            &:hover {
+              color: colors.$primary;
             }
           }
         }

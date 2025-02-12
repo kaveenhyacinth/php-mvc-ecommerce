@@ -11,4 +11,7 @@
 
     $router->get('/cart', [CartController::class, 'index']);
     $router->post('/cart', [CartController::class, 'create']);
+    $router->put('/cart', [CartController::class, 'update']);
+    $router->delete('/cart', [CartController::class, 'delete']);
+
     return $router;
